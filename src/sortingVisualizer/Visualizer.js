@@ -12,6 +12,12 @@ function Visualizer() {
         for (let i = 0; i < 310; i++) {
             temp.push(randomNumber(5, 635))
         }
+
+        let inBar = document.querySelectorAll('.bar')
+        for (let i = 0; i < inBar.length; i++) {
+            inBar[i].style.backgroundColor = 'teal'
+        }
+
         setArray(temp)
     }, [])
 
@@ -23,7 +29,6 @@ function Visualizer() {
     const mergeSort = () => {
         const bars = document.querySelectorAll('.bar')
         let animations = getMergeSortAnimations(array)
-        console.log(bars);
         for (let i = 0; i < animations.length; i++) {
             const isColorChange = i % 3 !== 2
             if (isColorChange) {
