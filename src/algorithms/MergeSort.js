@@ -1,39 +1,20 @@
-const merge = (arr, start, mid, end) => {
+const merge = (left, right) => {
     let res = []
-    let i = start, j = mid + 1
-
-    while (i <= mid && j <= end) {
-        if (arr[i] <= arr[j])
-            res.push(arr[i])
+    while (left.length && right.length) {
+        if (left[0] <= right[0])
+            res.push(left.shift())
         else
-            res.push(arr[j])
+            res.push(right.shift())
     }
 
-    while (i <= mid)
-        res.push(arr[i])
-
-    while (j <= end)
-        res.push(arr[j])
-    
-    arr = res.slice()
+    return [ ...res, ...left, ...right]
 }
 
-const MergeSort = (array, start, end) => {
-    if (start < end) {
-        let mid = Math.floor((start + end) / 2)
-        MergeSort(array, start, mid)
-        MergeSort(array, mid + 1, end)
-        merge(array, start, mid, end)
-    }
+const MergeSort = (array) => {
+    if (array.length < 2) return array
+    const mid = Math.floor(array.length / 2)
+    const left = array.splice(0, mid)
+    return merge(MergeSort(left), MergeSort(array))
 }
 
-let temp = [];
-const randomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1))
-for (let i = 0; i < 50; i++) {
-    temp.push(randomNumber(20, 635))
-}
-console.log({ 'before': temp });
-MergeSort(temp, 0, temp.length)
-console.log({ 'after': temp });
-
-// export default MergeSort
+export default MergeSort
