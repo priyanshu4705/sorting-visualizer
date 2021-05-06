@@ -8,6 +8,7 @@ const merge = (array, start, mid, end, temp, animations) => {
             animations.push([k, temp[i], 'red'])
             array[k++] = temp[i++]
         } else {
+            animations.push([j, array[j], 'red'])
             animations.push([k, temp[j], 'red'])
             array[k++] = temp[j++]
         }
@@ -23,6 +24,7 @@ const merge = (array, start, mid, end, temp, animations) => {
         animations.push([k, temp[j], 'red'])
         array[k++] = temp[j++]
     }
+    animations.push([mid, array[mid], 'red'])
 }
 
 const mergeSortHelper = (array, start, end, temp, animations) => {

@@ -13,10 +13,11 @@
   margin-top: 5px;
   display: flex;
   justify-content: center;
+  transform: scale(10%);
 }
 
 .bar {
-  width: 5px;
+  width: 4px;
   margin: 0 1px;
   background-color: teal;
   display: inline-block;
