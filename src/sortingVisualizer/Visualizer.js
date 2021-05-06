@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
+import getMergeSortAnimations from '../algorithms/MergeSort'
 import './visualizer.css'
 
 function Visualizer() {
@@ -9,35 +10,45 @@ function Visualizer() {
     const resetArray = useCallback(() => {
         let temp = [];
         for (let i = 0; i < 310; i++) {
-            temp.push(randomNumber(20, 635))
+            temp.push(randomNumber(5, 635))
         }
-        // console.log(temp);
         setArray(temp)
-        testArray(temp)
     }, [])
-
-    // perform different test on array
-    const testArray = (arr) => {
-        let found = 0
-        for (let i in arr) {
-            if (i === 0) {
-                found = 1
-                break;
-            }
-        }
-        console.log(found === 0 ? 'safe array' : 'found 0')
-    }
 
     // Fill array on startUp
     useEffect(() => { resetArray() }, [resetArray])
     // Generate random Number
-    const randomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1))
+    const randomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
 
-    const mergeSort = () => { console.log('Perform merge sort') }
+    const mergeSort = () => {
+        const bars = document.querySelectorAll('.bar')
+        let animations = getMergeSortAnimations(array)
+        console.log(bars);
+        for (let i = 0; i < animations.length; i++) {
+            const isColorChange = i % 3 !== 2
+            if (isColorChange) {
+                const [leftBar, RightBar] = animations[i]
+                const leftBarStyle = bars[leftBar].style
+                const rightBarStyle = bars[RightBar].style
+                const color = i % 3 === 0 ? 'teal' : 'red'
+                setTimeout(() => {
+                    leftBarStyle.backgroundColor = color
+                    rightBarStyle.backgroundColor = color
+                }, i)
+            } else {
+                const [leftBar, newHeight] = animations[i]
+                const leftBarStyle = bars[leftBar].style
+                setTimeout(() => {
+                    leftBarStyle.height = `${newHeight}px`
+                }, i)
+            }
+        }
+    }
+
     const bubbleSort = () => { }
     const selectionSort = () => { }
     const insertionSort = () => { }
-    const quickSort = () => {}
+    const quickSort = () => { }
 
 
     return (

@@ -1,20 +1,54 @@
-const merge = (left, right) => {
-    let res = []
-    while (left.length && right.length) {
-        if (left[0] <= right[0])
-            res.push(left.shift())
-        else
-            res.push(right.shift())
+const merge = (array, start, mid, end, temp, animations) => {
+    let i = start, j = mid + 1, k = start
+    while (i <= mid && j <= end) {
+        // select the bars
+        animations.push([i, j])
+        // unselect the bars
+        animations.push([i, j])
+        if (temp[i] <= temp[j]) {
+            // overwrite original array
+            animations.push([k, temp[i]])
+            array[k++] = temp[i++]
+        } else {
+            animations.push([k, temp[j]])
+            array[k++] = temp[j++]
+        }
     }
 
-    return [ ...res, ...left, ...right]
+    while (i <= mid) {
+        // select the bars
+        animations.push([i, i])
+        // unselect the bars
+        animations.push([i, i])
+        // overwrite original array
+        animations.push([k, temp[i]])
+        array[k++] = temp[i++]
+    }
+    while (j <= end) {
+        // select the bars
+        animations.push([j, j])
+        // unselect the bars
+        animations.push([j, j])
+        // overwrite original array
+        animations.push([k, temp[j]])
+        array[k++] = temp[j++]
+    }
 }
 
-const MergeSort = (array) => {
-    if (array.length < 2) return array
-    const mid = Math.floor(array.length / 2)
-    const left = array.splice(0, mid)
-    return merge(MergeSort(left), MergeSort(array))
+const mergeSortHelper = (array, start, end, temp, animations) => {
+    if (start === end) return
+    const mid = Math.floor((start + end) / 2)
+    mergeSortHelper(temp, start, mid, array, animations)
+    mergeSortHelper(temp, mid + 1, end, array, animations)
+    merge(array, start, mid, end, temp, animations)
 }
 
-export default MergeSort
+const getMergeSortAnimations = (array) => {
+    let animations = []
+    if (array.length <= 1) return array
+    let temp = array.slice()
+    mergeSortHelper(array, 0, array.length - 1, temp, animations)
+    return animations
+}
+
+export default getMergeSortAnimations
