@@ -1,3 +1,4 @@
+// Made with 💜 by Priyanshu Srivastava
 const bubbleSort = (arr, animations) => {
     let flag = false;
     for (let i = 0; i < arr.length; i++) {

@@ -1,3 +1,4 @@
+// Made with 💜 by Priyanshu Srivastava
 const selectionSort = (arr, animations) => {
     for (let i = 0; i < arr.length; i++) {
         let pos = i

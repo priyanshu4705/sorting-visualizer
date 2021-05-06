@@ -1,3 +1,4 @@
+// Made with 💜 by Priyanshu Srivastava
 const insertionSort = (arr, animations) => {
     let len = arr.length;
     for (let i = 0; i < len; i++) {

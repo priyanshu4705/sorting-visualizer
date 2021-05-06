@@ -1,3 +1,4 @@
+// Made with 💜 by Priyanshu Srivastava
 const merge = (array, start, mid, end, temp, animations) => {
     let i = start, j = mid + 1, k = start
     while (i <= mid && j <= end) {

@@ -1,3 +1,4 @@
+// Made with 💜 by Priyanshu Srivastava
 const animator = (animations) => {
     const bars = document.querySelectorAll('.bar')
     for (let i = 0; i < animations.length; i++) {

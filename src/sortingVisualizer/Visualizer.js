@@ -7,7 +7,7 @@ import animator from './Animator'
 import './visualizer.css'
 
 function Visualizer() {
-
+    // Made with 💜 by Priyanshu Srivastava
     const [array, setArray] = useState([]);
     const randomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
 
