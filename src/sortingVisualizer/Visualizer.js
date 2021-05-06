@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import getBubbleSortAnimations from '../algorithms/BubbleSort';
+import getInsertionSortAnimations from '../algorithms/InsertionSort';
 import getMergeSortAnimations from '../algorithms/MergeSort'
 import getSelectionSortAnimations from '../algorithms/SelectionSort';
 import animator from './Animator'
@@ -27,7 +28,7 @@ function Visualizer() {
     const mergeSort = () => animator(getMergeSortAnimations(array))
     const selectionSort = () => animator(getSelectionSortAnimations(array))
     const bubbleSort = () => animator(getBubbleSortAnimations(array))
-    const insertionSort = () => { }
+    const insertionSort = () => animator(getInsertionSortAnimations(array))
     const quickSort = () => { }
 
 
@@ -39,7 +40,7 @@ function Visualizer() {
                 <button onClick={selectionSort}>Selection Sort</button>
                 <button onClick={insertionSort}>Insertion Sort</button>
                 <button onClick={mergeSort}>Merge Sort</button>
-                <button onClick={quickSort}>Quick Sort</button>
+                <button disabled onClick={quickSort}>Quick Sort</button>
                 <p>Made with 💜 by Priyanshu Srivastava</p>
             </div>
             <div className="bar-container">
