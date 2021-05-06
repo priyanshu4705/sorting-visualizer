@@ -1,23 +1,23 @@
-.button-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
 }
 
-.button-container > button:not(:last-child){
-    margin-right: 10px;
+.button-container > button:not(:last-child) {
+  margin-right: 10px;
 }
 
-.bar-container{
-    margin-top: 5px;
-    display: flex;
-    justify-content: center;
+.bar-container {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
 }
 
-.bar{
-    width: 2px;
-    margin: 0 1px;
-    background-color: teal;
-    display: inline-block;
+.bar {
+  width: 2px;
+  margin: 0 1px;
+  background-color: teal;
+  display: inline-block;
 }

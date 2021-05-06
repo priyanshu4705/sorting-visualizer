@@ -1,12 +1,9 @@
 const merge = (array, start, mid, end, temp, animations) => {
     let i = start, j = mid + 1, k = start
     while (i <= mid && j <= end) {
-        // select the bars
         animations.push([i, j])
-        // unselect the bars
         animations.push([i, j])
         if (temp[i] <= temp[j]) {
-            // overwrite original array
             animations.push([k, temp[i]])
             array[k++] = temp[i++]
         } else {
@@ -16,20 +13,14 @@ const merge = (array, start, mid, end, temp, animations) => {
     }
 
     while (i <= mid) {
-        // select the bars
         animations.push([i, i])
-        // unselect the bars
         animations.push([i, i])
-        // overwrite original array
         animations.push([k, temp[i]])
         array[k++] = temp[i++]
     }
     while (j <= end) {
-        // select the bars
         animations.push([j, j])
-        // unselect the bars
         animations.push([j, j])
-        // overwrite original array
         animations.push([k, temp[j]])
         array[k++] = temp[j++]
     }

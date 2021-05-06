@@ -1,55 +1,28 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import getMergeSortAnimations from '../algorithms/MergeSort'
+import animator from './Animator'
 import './visualizer.css'
 
 function Visualizer() {
 
     const [array, setArray] = useState([]);
+    const randomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
 
-    // Fill Array with Random Numbers between 5 and 750
     const resetArray = useCallback(() => {
         let temp = [];
-        for (let i = 0; i < 310; i++) {
+        for (let i = 0; i < 310; i++)
             temp.push(randomNumber(5, 635))
-        }
 
         let inBar = document.querySelectorAll('.bar')
-        for (let i = 0; i < inBar.length; i++) {
+        for (let i = 0; i < inBar.length; i++)
             inBar[i].style.backgroundColor = 'teal'
-        }
 
         setArray(temp)
     }, [])
 
-    // Fill array on startUp
     useEffect(() => { resetArray() }, [resetArray])
-    // Generate random Number
-    const randomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
 
-    const mergeSort = () => {
-        const bars = document.querySelectorAll('.bar')
-        let animations = getMergeSortAnimations(array)
-        for (let i = 0; i < animations.length; i++) {
-            const isColorChange = i % 3 !== 2
-            if (isColorChange) {
-                const [leftBar, RightBar] = animations[i]
-                const leftBarStyle = bars[leftBar].style
-                const rightBarStyle = bars[RightBar].style
-                const color = i % 3 === 0 ? 'teal' : 'red'
-                setTimeout(() => {
-                    leftBarStyle.backgroundColor = color
-                    rightBarStyle.backgroundColor = color
-                }, i)
-            } else {
-                const [leftBar, newHeight] = animations[i]
-                const leftBarStyle = bars[leftBar].style
-                setTimeout(() => {
-                    leftBarStyle.height = `${newHeight}px`
-                }, i)
-            }
-        }
-    }
-
+    const mergeSort = () => animator(getMergeSortAnimations(array))
     const bubbleSort = () => { }
     const selectionSort = () => { }
     const insertionSort = () => { }
