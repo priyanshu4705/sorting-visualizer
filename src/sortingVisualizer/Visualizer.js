@@ -11,7 +11,7 @@ function Visualizer() {
     const resetArray = useCallback(() => {
         let temp = [];
         for (let i = 0; i < 310; i++)
-            temp.push(randomNumber(5, 635))
+            temp.push(randomNumber(5, 625))
 
         let inBar = document.querySelectorAll('.bar')
         for (let i = 0; i < inBar.length; i++)
