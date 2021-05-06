@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import getMergeSortAnimations from '../algorithms/MergeSort'
 import getSelectionSortAnimations from '../algorithms/SelectionSort';
-import {mergeAnimator, selectionAnimator} from './Animator'
+import animator from './Animator'
 import './visualizer.css'
 
 function Visualizer() {
@@ -11,7 +11,7 @@ function Visualizer() {
 
     const resetArray = useCallback(() => {
         let temp = [];
-        for (let i = 0; i < 310; i++)
+        for (let i = 0; i < 200; i++)
             temp.push(randomNumber(5, 625))
 
         let inBar = document.querySelectorAll('.bar')
@@ -23,8 +23,8 @@ function Visualizer() {
 
     useEffect(() => { resetArray() }, [resetArray])
 
-    const mergeSort = () => mergeAnimator(getMergeSortAnimations(array))
-    const selectionSort = () => selectionAnimator(getSelectionSortAnimations(array))
+    const mergeSort = () => animator(getMergeSortAnimations(array))
+    const selectionSort = () => animator(getSelectionSortAnimations(array))
     const bubbleSort = () => { }
     const insertionSort = () => { }
     const quickSort = () => { }

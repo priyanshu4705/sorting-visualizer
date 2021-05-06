@@ -1,27 +1,26 @@
 const merge = (array, start, mid, end, temp, animations) => {
     let i = start, j = mid + 1, k = start
     while (i <= mid && j <= end) {
-        animations.push([i, j])
-        animations.push([i, j])
+        animations.push([i, array[i], 'yellow'])
+        animations.push([j, array[j], 'yellow'])
         if (temp[i] <= temp[j]) {
-            animations.push([k, temp[i]])
+            animations.push([i, array[i], 'red'])
+            animations.push([k, temp[i], 'red'])
             array[k++] = temp[i++]
         } else {
-            animations.push([k, temp[j]])
+            animations.push([k, temp[j], 'red'])
             array[k++] = temp[j++]
         }
     }
 
     while (i <= mid) {
-        animations.push([i, i])
-        animations.push([i, i])
-        animations.push([k, temp[i]])
+        animations.push([i, array[i], 'yellow'])
+        animations.push([k, temp[i], 'red'])
         array[k++] = temp[i++]
     }
     while (j <= end) {
-        animations.push([j, j])
-        animations.push([j, j])
-        animations.push([k, temp[j]])
+        animations.push([j, array[j], 'yellow'])
+        animations.push([k, temp[j], 'red'])
         array[k++] = temp[j++]
     }
 }
