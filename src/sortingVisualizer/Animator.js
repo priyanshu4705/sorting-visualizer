@@ -1,4 +1,4 @@
-const animator = (animations) => {
+export const mergeAnimator = (animations) => {
     const bars = document.querySelectorAll('.bar')
     for (let i = 0; i < animations.length; i++) {
         const isColorChange = i % 3 !== 2
@@ -21,4 +21,6 @@ const animator = (animations) => {
     }
 }
 
-export default animator
+export const selectionAnimator = (animations) => {
+    
+}

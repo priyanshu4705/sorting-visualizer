@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import getMergeSortAnimations from '../algorithms/MergeSort'
-import animator from './Animator'
+import getSelectionSortAnimations from '../algorithms/SelectionSort';
+import {mergeAnimator, selectionAnimator} from './Animator'
 import './visualizer.css'
 
 function Visualizer() {
@@ -22,9 +23,9 @@ function Visualizer() {
 
     useEffect(() => { resetArray() }, [resetArray])
 
-    const mergeSort = () => animator(getMergeSortAnimations(array))
+    const mergeSort = () => mergeAnimator(getMergeSortAnimations(array))
+    const selectionSort = () => selectionAnimator(getSelectionSortAnimations(array))
     const bubbleSort = () => { }
-    const selectionSort = () => { }
     const insertionSort = () => { }
     const quickSort = () => { }
 
